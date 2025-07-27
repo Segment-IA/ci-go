@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - go-modules:/go/pkg/mod
+      
+    ports:
+      - "8080:8080"  # Application port
+
+    environment:
+      - GO111MODULE=on
+      - CGO_ENABLED=0
+      - GOPATH=/go
+      - GOMODCACHE=/go/pkg/mod
+    # Override the default command to keep the container running
+    command: sleep infinity
+    # Allow for debugging
+    security_opt:
+      - "seccomp:unconfined"
+    cap_add:
+      - SYS_PTRACE
+
+volumes:
+  go-modules: # Named volume for Go modules cache
