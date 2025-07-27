@@ -20,6 +20,8 @@ RUN go mod download
 # Copy the source code
 COPY . .
 
+RUN go build -o math cmd/math.go
+
 # Command to run the application
 #CMD ["go", "run", "cmd/math.go"]
-CMD ["tail", "-f", "/dev/null"]
+CMD ["./math"]
