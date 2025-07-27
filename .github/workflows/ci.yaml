@@ -14,8 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        go-version: [1.23, 1.24]
-        os: [ubuntu-latest]
+        # go-version: [1.23, 1.24]
+        go-version: [1.24]
+        os: [ubuntu-latest,"ubuntu-arm64-latest"]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
