@@ -8,7 +8,11 @@ on:
   pull_request:
     branches:
       - develop
-   
+
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   check-application:
     runs-on: ubuntu-latest
